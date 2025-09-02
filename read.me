@@ -12,4 +12,18 @@ Copy your html file here!
 src\
 The sourcefile directory which holds the docker files needed to build the image
 
+Build command
+docker build -f src/Dockerfile -t dev-html .
+
+-f plaats van het dockerfile
+-t tag van de docker image
+
+Run command 
+docker run -d --name htmlserver -p 8080:80 -v "$(pwd)/html":/usr/share/nginx/html:ro dev-html
+
+-d container draait in detached mode
+--name naam van de container
+-p poortnummers gemapt van poort 80 (intern container) naar 8080 op localhost
+-v volume voor het dynamisch updaten van de webserver bij aanpasing
+
 #eof
